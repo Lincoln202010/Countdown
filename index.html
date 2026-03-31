@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Timer</title>
+<style>
+  body {
+    margin: 0;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: monospace;
+    font-size: 5vw;
+  }
+</style>
+</head>
+<body>
+
+<div id="timer"></div>
+
+<script>
+  let time = 7 * 24 * 60 * 60; // 7 days in seconds
+
+  function updateTimer() {
+    let days = Math.floor(time / 86400);
+    let hours = Math.floor((time % 86400) / 3600);
+    let minutes = Math.floor((time % 3600) / 60);
+    let seconds = time % 60;
+
+    document.getElementById("timer").textContent =
+      `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+    if (time <= 0) {
+      window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    }
+
+    time--;
+  }
+
+  updateTimer();
+  setInterval(updateTimer, 1000);
+</script>
+
+</body>
+</html>
